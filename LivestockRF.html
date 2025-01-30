@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RF-Based Livestock Counting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        code {
+            background: #eee;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Developing an RF-Based Livestock Counting System</h1>
+        <p><strong>May 1, 2024 - Project Conception</strong></p>
+        <p>The idea for an RF-based livestock counting system came from conversations with local farmers in India who struggled with tracking their livestock efficiently. Manual counting was prone to errors, and existing solutions were too expensive. I decided to develop a cost-effective, automated solution using RFID technology to help farmers manage their livestock with minimal effort.</p>
+        
+        <h2>Concept Diagram</h2>
+        <img src="https://blog.labtag.com/wp-content/uploads/2020/03/RFID20Technology20-20Presentation20-207202072820x2025020px20.jpg" alt="Diagram of RFID System">
+        
+        <h2>Research & Feasibility Study</h2>
+        <p>I started researching different RFID implementations, comparing passive vs. active tags, and studying their range, cost, and power consumption. I also explored LoRa, GSM, and WiFi as potential communication methods for real-time data transmission. A passive RFID system with a central reader at the farm gate was found to be the most feasible approach.</p>
+        
+        <h2>Mathematical Foundation</h2>
+        <p>The performance of RFID-based systems is governed by the Friis transmission equation:</p>
+        <pre><code>P_r = \frac{P_t G_t G_r \lambda^2}{(4 \pi d)^2}</code></pre>
+        <p>where:</p>
+        <ul>
+            <li><code>P_r</code> = received power</li>
+            <li><code>P_t</code> = transmitted power</li>
+            <li><code>G_t, G_r</code> = antenna gains</li>
+            <li><code>λ</code> = wavelength</li>
+            <li><code>d</code> = distance between antennas</li>
+        </ul>
+        <p>Additionally, RFID detection efficiency can be analyzed using convolution techniques. The 1D convolution integral is given by:</p>
+        <pre><code>(f * g)(t) = \int_{-\infty}^{\infty} f(t - \tau) g(\tau) d\tau</code></pre>
+        <p>For a 2D spatial domain relevant to RFID tag positioning:</p>
+        <pre><code>(f * g)(x, y) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x - \tau_i, y - \tau_j) g(\tau_i, \tau_j) d\tau_i d\tau_j</code></pre>
+        
+        <h2>Implementation & Testing</h2>
+        <p>After selecting an RFID reader (RC522) and ESP32 microcontroller, I tested the range. Initial results showed detection issues at certain angles. I explored higher-range UHF RFID readers and optimized antenna positioning. Testing on livestock revealed that dust and movement affected readability, leading to refinements in tag placement.</p>
+        <img src="https://eu-images.contentstack.com/v3/assets/blt4175b16074920322/bltd948adbb92af49c3/6485e9af9fa29e367860d811/DSC_4995.png" alt="Testing RFID Tags on Livestock">
+        
+        <h2>Final Deployment & Future Plans</h2>
+        <p>With improved accuracy and added local storage via an SD card module, the system was deployed on multiple farms. Farmers benefited from automated livestock counting, reducing errors and manual work. Future plans include integrating GPS tracking for lost animals and exploring scalability across rural regions in India.</p>
+    </div>
+</body>
+</html>
