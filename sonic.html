@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic Run Game with Kaplay</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Building a Sonic Run Game with Kaplay</h1>
+    <p>Creating a high-speed endless runner game inspired by Sonic can be simplified using <strong>Kaplay</strong>, a JavaScript game development library designed for rapid prototyping.</p>
+    
+    <h2>Getting Started</h2>
+    <p>First, initialize your project using:</p>
+    <pre><code>npx create-kaplay mygame
+cd mygame
+npm run dev</code></pre>
+    
+    <h2>Loading Assets</h2>
+    <p>To load a sprite for the player character:</p>
+    <pre><code>loadSprite("sonic", "sprites/sonic.png");</code></pre>
+    
+    <h2>Defining the Player</h2>
+    <p>Add the Sonic character to the game world:</p>
+    <pre><code>const player = add([
+    sprite("sonic"),
+    pos(80, 40),
+    area(),
+    body(),
+]);</code></pre>
+    
+    <h2>Implementing Controls</h2>
+    <p>Enable jumping using the spacebar:</p>
+    <pre><code>onKeyPress("space", () => {
+    player.jump();
+});</code></pre>
+    
+    <h2>Creating Obstacles</h2>
+    <p>Add obstacles for the player to avoid:</p>
+    <pre><code>add([
+    rect(200, 20),
+    pos(100, 200),
+    area(),
+    solid(),
+]);</code></pre>
+    
+    <h2>Adding Collectibles</h2>
+    <p>To add rings for the player to collect:</p>
+    <pre><code>const ring = add([
+    sprite("ring"),
+    pos(200, 150),
+    area(),
+    "collectible",
+]);
+
+player.onCollide("collectible", (c) => {
+    destroy(c);
+    // Update score logic
+});</code></pre>
+    
+    <h2>Conclusion</h2>
+    <p>Using Kaplay, you can quickly develop a Sonic-inspired endless runner. Experiment with different mechanics to enhance gameplay!</p>
+</body>
+</html>
